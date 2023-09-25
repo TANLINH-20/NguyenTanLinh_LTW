@@ -1,0 +1,10 @@
+{
+    "name": "nguyentanlinh/shop-thoi-trang",
+    "description": "Xay dung website ban hang-thay loi",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "application"
+        }
+    },
+    "require": {}
+}
