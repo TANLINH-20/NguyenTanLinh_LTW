@@ -1,7 +1,11 @@
 <?php
 use App\Models\Product;
-$list = Product::where('status','!=','0')
-->orderBy('created_at','desc')->get();
+$list = Product::where('product.status','!=','0')
+->join('category','category.id','=','product.category_id')
+->join('brand','brand.id','=','product.brand_id')
+->orderBy('product.created_at','desc')
+->select('product.name','product.image','product.status','product.id','category.name as catename','brand.name as brandname')
+->get();
 ?>
 <?php require_once "../views/backend/header.php"; ?>
 <!-- CONTENT -->
@@ -64,8 +68,8 @@ $list = Product::where('status','!=','0')
                                     <a href="index.php?option=product&cat=delete&id=<?=$item->id ?>">Xoá</a>
                                  </div>
                               </td> 
-                              <td><?=$item->category_id ?></td>
-                              <td><?=$item->brand_id ?></td>
+                              <td><?=$item->catename ?></td>
+                              <td><?=$item->brandname ?></td>
                            </tr>
                            <?php endforeach; ?>
                         <?php endif; ?>

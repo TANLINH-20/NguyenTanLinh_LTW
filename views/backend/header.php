@@ -50,7 +50,7 @@
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="#" role="button">
+               <a class="nav-link" href="logout.php" role="button">
                   <i class="fas fa-power-off"></i> Đăng xuất
                </a>
             </li>
@@ -65,10 +65,10 @@
          <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                <div class="image">
-                  <img src="../public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                  <img src="../public/images/<?= ($_SESSION['image'])??'image.png'; ?>" class="img-circle elevation-2" alt="<?= ($_SESSION['image'])??'image.png'; ?>">
                </div>
                <div class="info">
-                  <a href="#" class="d-block">Hồ Diên Lợi</a>
+                  <a href="#" class="d-block"><?= ($_SESSION['name'])??'name'; ?></a>
                </div>
             </div>
             <nav class="mt-2">
