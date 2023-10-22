@@ -5,7 +5,7 @@ class Route{
         if (isset($_REQUEST['option'])) {
             $pathView .= $_REQUEST['option'];
             if (isset($_REQUEST['slug'])) {
-                $pathView="-detail.php";
+                $pathView.="-detail.php";
             } else {
                 if (isset($_REQUEST['cat'])) {
                     $pathView .= "-category.php";
@@ -13,11 +13,10 @@ class Route{
                      $pathView .= ".php";
                 }
             }
-            
-            } else { 
-                $pathView .= "home.php";
-            } 
-            require_once $pathView;
+        } else { 
+            $pathView .= "home.php";
+        } 
+        require_once $pathView;
     }
 
     public static function route_admin()
@@ -36,4 +35,3 @@ class Route{
         require_once $pathView;
     }
 }
-?>

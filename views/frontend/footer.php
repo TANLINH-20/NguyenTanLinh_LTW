@@ -38,16 +38,7 @@
                </div>
             </div>
             <div class="col-md-4 pt-4">
-               <h3 class="widgettilte">
-                  <strong>Liên hệ</strong>
-               </h3>
-               <ul class="footer-menu">
-                  <li><a href="index.html">Trang chủ</a></li>
-                  <li><a href="post_page.html">Giới thiệu</a></li>
-                  <li><a href="product.html">Sản phẩm</a></li>
-                  <li><a href="post_topic.html">Bài viết</a></li>
-                  <li><a href="contact.html">Liên hệ</a></li>
-               </ul>
+            <?php require_once 'views/frontend/mod-footermenu.php'?>
             </div>
             <div class="col-md-4 pt-4 text-end">
                <h3 class="fs-5 text-end">
