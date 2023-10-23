@@ -22,7 +22,7 @@ $list = Brand::where('status', '!=', '0')
       <section class="content">
          <div class="card">
             <div class="card-header text-right">
-               <button class="btn btn-sm btn-success" type="submit" name="them">
+               <button class="btn btn-sm btn-success" type="submit" name="THEM">
                   <i class="fa fa-save" aria-hidden="true"></i>
                   Lưu
                </button>

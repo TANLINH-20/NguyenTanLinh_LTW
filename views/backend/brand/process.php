@@ -2,7 +2,7 @@
 
 use App\Models\Brand;
 use App\Libraries\MyClass;
-if (isset($_POST['them'])) {
+if (isset($_POST['THEM'])) {
     $brand = new Brand();
     //lấy từ form
     $brand->name = $_POST['name'];

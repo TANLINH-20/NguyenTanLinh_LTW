@@ -70,7 +70,7 @@ class MyClass
         if (empty($slug)) return $slug;
         if (is_array($slug)) {
             foreach (array_keys($slug) as $key) {
-                $slug[$key] = nv_unhtmlspecialchars($slug[$key]);
+                
             }
         } else {
             $search = array(
@@ -116,5 +116,18 @@ class MyClass
         $a = array_slice($array, 0, $limit);
         return implode(' ', $a);
     }
+    public static function set_flash($name,$arr)
+    {
+        $_SESSION[$name] = ['msg'=>$arr['msg'], 'type'=>$arr['type']];
+    }
+    public static function get_flash($name)
+    {
+        $arr=$_SESSION[$name];
+        unset($_SESSION[$name]);
+        return $arr;
+    }
+    public static function has_flash($name)
+    {
+        return isset($_SESSION[$name]);
+    }
 }
-?>
