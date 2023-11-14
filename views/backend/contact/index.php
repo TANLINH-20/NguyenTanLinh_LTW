@@ -1,7 +1,9 @@
 <?php
+
 use App\Models\Contact;
-$list = Contact::where('status','!=','0')
-->orderBy('created_at','desc')->get();
+
+$list = Contact::where('status', '!=', '0')
+   ->orderBy('created_at', 'desc')->get();
 ?>
 <?php require_once "../views/backend/header.php"; ?>
 <!-- CONTENT -->
@@ -35,14 +37,11 @@ $list = Contact::where('status','!=','0')
                   </tr>
                </thead>
                <tbody>
-               <?php if (count($list) > 0) : ?>
+                  <?php if (count($list) > 0) : ?>
                      <?php foreach ($list as $item) : ?>
                         <tr class="datarow">
                            <td>
                               <input type="checkbox">
-                           </td>
-                           <td>
-                              <img src="../public/images/user/<?= $item->image; ?>" alt="<?= $item->image; ?>">
                            </td>
                            <td>
                               <div class="name">
@@ -50,13 +49,20 @@ $list = Contact::where('status','!=','0')
                               </div>
                               <div class="function_style">
                                  <?php if ($item->status == 1) : ?>
-                                    <a class="text-success" href="index.php?option=user&cat=status&id=<?= $item->id ?>">Hiện</a> |
+                                    <a class="btn btn-success btn-xs" href="index.php?option=contact&cat=status&id=<?= $item->id ?>">
+                                       <i class="fa fa-toggle-on"></i>
+                                       Hiện</a>
                                  <?php else : ?>
-                                    <a class="text-danger" href="index.php?option=user&cat=status&id=<?= $item->id ?>">Ẩn</a> |
+                                    <a class="btn btn-danger btn-xs" href="index.php?option=contact&cat=status&id=<?= $item->id ?>">
+                                       <i class="fa fa-toggle-off"></i>
+                                       Ẩn</a>
                                  <?php endif; ?>
-                                 <a href="index.php?option=user&cat=edit&id=<?= $item->id ?>">Chỉnh sửa</a> |
-                                 <a href="index.php?option=user&cat=show&id=<?= $item->id ?>">Chi tiết</a> |
-                                 <a href="index.php?option=user&cat=delete&id=<?= $item->id ?>">Xoá</a>
+                                 <a class="btn btn-info btn-xs" href="index.php?option=contact&cat=show&id=<?= $item->id ?>">
+                                    <i class="fa fa-eye"></i>
+                                    Chi tiết</a>
+                                 <a class="btn btn-danger btn-xs" href="index.php?option=contact&cat=delete&id=<?= $item->id ?>">
+                                    <i class="fa fa-trash"></i>
+                                    Xoá</a>
                               </div>
                            </td>
                            <td> <?= $item->phone; ?></td>
