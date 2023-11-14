@@ -2,8 +2,8 @@
 
 use App\Models\Brand;
 
-$list = Brand::where('status', '!=', '0')
-   ->orderBy('created_at', 'desc')->get();
+$list = Brand::where('status', '!=', 0)
+   ->orderBy('created_at', 'DESC')->get();
 ?>
 <?php require_once "../views/backend/header.php"; ?>
 <!-- CONTENT -->
@@ -21,18 +21,27 @@ $list = Brand::where('status', '!=', '0')
       <!-- Main content -->
       <section class="content">
          <div class="card">
-            <div class="card-header text-right">
-               <button class="btn btn-sm btn-success" type="submit" name="THEM">
-                  <i class="fa fa-save" aria-hidden="true"></i>
-                  Lưu
-               </button>
+            <div class="card-header ">
+               <div class="row">
+                  <div class="col-md-6">
+                     <a href="index.php?option=brand">Tất cả</a> |
+                     <a href="index.php?option=brand&cat=trash">Thùng rác</a>
+                  </div>
+                  <div class="col-md-6 text-right">
+                     <button class="btn btn-sm btn-success" type="submit" name="THEM">
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        Lưu
+                     </button>
+                  </div>
+               </div>
             </div>
             <div class="card-body">
+            <?php require_once "../views/backend/message.php";?>
                <div class="row">
                   <div class="col-md-4">
                      <div class="mb-3">
                         <label>Tên thương hiệu (*)</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" required>
                      </div>
                      <div class="mb-3">
                         <label>Slug</label>
@@ -74,7 +83,7 @@ $list = Brand::where('status', '!=', '0')
                                        <input type="checkbox">
                                     </td>
                                     <td>
-                                       <img src="../public/images/brand/<?= $item->image; ?>" alt="<?= $item->image; ?>">
+                                       <img style="width:100px" src="../public/images/brand/<?= $item->image; ?>" alt="<?= $item->image; ?>">
                                     </td>
                                     <td>
                                        <div class="name">
@@ -84,21 +93,21 @@ $list = Brand::where('status', '!=', '0')
                                           <?php if ($item->status == 1) : ?>
                                              <a class="btn btn-success btn-xs" href="index.php?option=brand&cat=status&id=<?= $item->id ?>">
                                                 <i class="fa fa-toggle-on"></i>
-                                                Hiện</a> 
+                                                Hiện</a>
                                           <?php else : ?>
                                              <a class="btn btn-danger btn-xs" href="index.php?option=brand&cat=status&id=<?= $item->id ?>">
-                                             <i class="fa fa-toggle-off"></i>
-                                             Ẩn</a> 
+                                                <i class="fa fa-toggle-off"></i>
+                                                Ẩn</a>
                                           <?php endif; ?>
                                           <a class="btn btn-primary btn-xs" href="index.php?option=brand&cat=edit&id=<?= $item->id ?>">
-                                          <i class="fa fa-edit"></i>
-                                          Chỉnh sửa</a> 
+                                             <i class="fa fa-edit"></i>
+                                             Chỉnh sửa</a>
                                           <a class="btn btn-info btn-xs" href="index.php?option=brand&cat=show&id=<?= $item->id ?>">
-                                          <i class="fa fa-eye"></i>
-                                          Chi tiết</a> 
+                                             <i class="fa fa-eye"></i>
+                                             Chi tiết</a>
                                           <a class="btn btn-danger btn-xs" href="index.php?option=brand&cat=delete&id=<?= $item->id ?>">
-                                          <i class="fa fa-trash"></i>
-                                          Xoá</a>
+                                             <i class="fa fa-trash"></i>
+                                             Xoá</a>
                                        </div>
                                     </td>
                                     <td> <?= $item->slug; ?></td>

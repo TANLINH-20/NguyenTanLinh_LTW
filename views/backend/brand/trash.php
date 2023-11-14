@@ -2,7 +2,8 @@
 
 use App\Models\Brand;
 
-$list = Brand::where('status', '=', 0)->orderBy('created_at', 'DESC')->get();
+$list = Brand::where('status', '=', 0)
+    ->orderBy('created_at', 'DESC')->get();
 ?>
 <?php require_once "../views/backend/header.php"; ?>
 <!-- CONTENT -->
@@ -17,10 +18,10 @@ $list = Brand::where('status', '=', 0)->orderBy('created_at', 'DESC')->get();
         </div>
     </section>
     <!-- Main content -->
-
     <section class="content">
         <div class="card">
             <div class="card-header ">
+                <?php require_once "../views/backend/message.php";?>
                 <div class="row">
                     <div class="col-md-6">
                         <a href="index.php?option=brand">Tất cả</a> |
@@ -35,7 +36,6 @@ $list = Brand::where('status', '=', 0)->orderBy('created_at', 'DESC')->get();
                 </div>
             </div>
             <div class="card-body">
-                <?php require_once "../views/backend/message.php"; ?>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-bordered">
@@ -57,7 +57,7 @@ $list = Brand::where('status', '=', 0)->orderBy('created_at', 'DESC')->get();
                                                 <input type="checkbox">
                                             </td>
                                             <td>
-                                                <img src="../public/images/<?= $item->image; ?>" alt="<?= $item->image; ?>">
+                                                <img style="width:100px" src="../public/images/brand/<?= $item->image; ?>" alt="<?= $item->image; ?>">
                                             </td>
                                             <td>
                                                 <div class="name">
@@ -66,12 +66,13 @@ $list = Brand::where('status', '=', 0)->orderBy('created_at', 'DESC')->get();
                                                 <div class="function_style">
                                                     <a href="index.php?option=brand&cat=restore&id=<?= $item->id; ?>" class="btn btn-info btn-xs">
                                                         <i class="fas fa-undo"></i> Khôi phục
-                                                        <a href="index.php?option=brand&cat=destroy&id=<?= $item->id; ?>" class="btn btn-danger btn-xs">
-                                                            <i class="fas fa-trash"></i>Xoá
-                                                        </a>
+                                                    </a>
+                                                    <a href="index.php?option=brand&cat=destroy&id=<?= $item->id; ?>" class="btn btn-danger btn-xs">
+                                                        <i class="fas fa-trash"></i>Xoá
+                                                    </a>
                                                 </div>
                                             </td>
-                                            <td><?= $item->slug ?></td>
+                                            <td> <?= $item->slug; ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
@@ -83,6 +84,5 @@ $list = Brand::where('status', '=', 0)->orderBy('created_at', 'DESC')->get();
         </div>
     </section>
 </div>
-
 <!-- END CONTENT-->
-<?php require_once '../views/backend/footer.php'; ?>
+<?php require_once "../views/backend/footer.php"; ?>

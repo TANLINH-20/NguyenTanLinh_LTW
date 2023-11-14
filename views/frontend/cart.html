@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Chi tiết bài viết</title>
+   <title>Giỏ hàng</title>
    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
    <link rel="stylesheet" href="../public/fontawesome/css/all.min.css">
    <link rel="stylesheet" href="../public/css/frontend.css">
@@ -131,7 +131,7 @@
                   <a class="text-main" href="index.html">Trang chủ</a>
                </li>
                <li class="breadcrumb-item active" aria-current="page">
-                  Chi tiết bài viết
+                  Giỏ hàng của bạn
                </li>
             </ol>
          </nav>
@@ -139,144 +139,116 @@
    </section>
    <section class="hdl-maincontent py-2">
       <div class="container">
-         <div class="row">
-            <div class="col-md-3 order-2 order-md-1">
-               <ul class="list-group mb-3 list-category">
-                  <li class="list-group-item bg-main py-3">Danh mục sản phẩm</li>
-                  <li class="list-group-item">
-                     <a href="product_category.html">Thời trang nam</a>
-                  </li>
-                  <li class="list-group-item">
-                     <a href="product_category.html">Thời trang nữ</a>
-                  </li>
-                  <li class="list-group-item">
-                     <a href="product_category.html">Thời trang trẻ em</a>
-                  </li>
-                  <li class="list-group-item">
-                     <a href="product_category.html">Thời trang thể thao</a>
-                  </li>
-               </ul>
-               <ul class="list-group mb-3 list-brand">
-                  <li class="list-group-item bg-main py-3">Thương hiệu</li>
-                  <li class="list-group-item">
-                     <a href="product_brand.html">Việt Nam</a>
-                  </li>
-                  <li class="list-group-item">
-                     <a href="product_brand.html">Hàn Quốc</a>
-                  </li>
-                  <li class="list-group-item">
-                     <a href="product_brand.html">Thái Lan</a>
-                  </li>
-                  <li class="list-group-item">
-                     <a href="product_brand.html">Quản Châu</a>
-                  </li>
-               </ul>
-               <ul class="list-group mb-3 list-product-new">
-                  <li class="list-group-item bg-main py-3">Sản phẩm mới</li>
-                  <li class="list-group-item">
-                     <div class="product-item border">
-                        <div class="product-item-image">
-                           <a href="product_detail.html">
-                              <img src="../public/images/product/thoi-trang-the-thao-1.webp" class="img-fluid" alt="">
-                           </a>
-                        </div>
-                        <h2 class="product-item-name text-main text-center fs-5 py-1">
-                           <a href="product_detail.html">Thời trang thể thao 1</a>
-                        </h2>
-                        <h3 class="product-item-price fs-6 p-2 d-flex">
-                           <div class="flex-fill"><del>200.000đ</del></div>
-                           <div class="flex-fill text-end text-main">190.000đ</div>
-                        </h3>
+         <table class="table table-bordered">
+            <thead>
+               <tr class="bg-dark">
+                  <th style="width:30px;" class="text-center">STT</th>
+                  <th style="width:100px;">Hình</th>
+                  <th>Tên sản phẩm</th>
+                  <th class="text-center">Giá</th>
+                  <th style="width:130px" class='text-center'>Số lượng</th>
+                  <th class="text-center">Thành tiền</th>
+                  <th></th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="text-center align-middle">1</td>
+                  <td>
+                     <img class="img-fluid" src="../public/images/product/thoi-trang-nam-1.jpg" alt="">
+                  </td>
+                  <td class="align-middle">Tên sản phẩm</td>
+                  <td class="text-center align-middle">1000000</td>
+                  <td class="text-center align-middle">
+                     <div class="input-group mb-3">
+                        <span class="input-group-text" id="sub" onclick="changenumber(id)">-</span>
+                        <input type="text" value="1" id="qty" class="form-control text-center">
+                        <span class="input-group-text" id="add" onclick="changenumber(id)">+</span>
                      </div>
-                  </li>
-                  <li class="list-group-item">
-                     <div class="product-item border">
-                        <div class="product-item-image">
-                           <a href="product_detail.html">
-                              <img src="../public/images/product/thoi-trang-the-thao-2.webp" class="img-fluid" alt="">
-                           </a>
-                        </div>
-                        <h2 class="product-item-name text-main text-center fs-5 py-1">
-                           <a href="product_detail.html">Thời trang thể thao 2</a>
-                        </h2>
-                        <h3 class="product-item-price fs-6 p-2 d-flex">
-                           <div class="flex-fill"><del>200.000đ</del></div>
-                           <div class="flex-fill text-end text-main">190.000đ</div>
-                        </h3>
+                  </td>
+                  <td class="text-center align-middle">
+                     12900000
+                  </td>
+                  <td class="text-center align-middle">
+                     <button class="btn btn-sm btn-main">
+                        <i class="fa-solid fa-xmark"></i>
+                     </button>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-center align-middle">3</td>
+                  <td>
+                     <img class="img-fluid" src="../public/images/product/thoi-trang-nam-1.jpg" alt="">
+                  </td>
+                  <td class="align-middle">Tên sản phẩm</td>
+                  <td class="text-center align-middle">1000000</td>
+                  <td class="text-center align-middle">
+                     <div class="input-group mb-3">
+                        <span class="input-group-text" id="sub" onclick="changenumber(id)">-</span>
+                        <input type="text" value="1" id="qty" class="form-control text-center">
+                        <span class="input-group-text" id="add" onclick="changenumber(id)">+</span>
                      </div>
-                  </li>
-                  <li class="list-group-item">
-                     <div class="product-item border">
-                        <div class="product-item-image">
-                           <a href="product_detail.html">
-                              <img src="../public/images/product/thoi-trang-the-thao-1.webp" class="img-fluid" alt="">
-                           </a>
-                        </div>
-                        <h2 class="product-item-name text-main text-center fs-5 py-1">
-                           <a href="product_detail.html">Thời trang thể thao 3</a>
-                        </h2>
-                        <h3 class="product-item-price fs-6 p-2 d-flex">
-                           <div class="flex-fill"><del>200.000đ</del></div>
-                           <div class="flex-fill text-end text-main">190.000đ</div>
-                        </h3>
+                  </td>
+                  <td class="text-center align-middle">
+                     12900000
+                  </td>
+                  <td class="text-center align-middle">
+                     <button class="btn btn-sm btn-main">
+                        <i class="fa-solid fa-xmark"></i>
+                     </button>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="text-center align-middle">3</td>
+                  <td>
+                     <img class="img-fluid" src="../public/images/product/thoi-trang-nam-1.jpg" alt="">
+                  </td>
+                  <td class="align-middle">Tên sản phẩm</td>
+                  <td class="text-center align-middle">1000000</td>
+                  <td class="text-center align-middle">
+                     <div class="input-group mb-3">
+                        <span class="input-group-text" id="sub" onclick="changenumber(id)">-</span>
+                        <input type="text" value="1" id="qty" class="form-control text-center">
+                        <span class="input-group-text" id="add" onclick="changenumber(id)">+</span>
                      </div>
-                  </li>
-               </ul>
-            </div>
-            <div class="col-md-9 order-1 order-md-2">
-               <h1 class="fs-2 text-main">Tiêu đề bài viết 1</h1>
-               <p>
-                  Video provides a powerful way to help you prove your point. When you click Online Video, you can paste
-                  in the embed code for the video you want to add. You can also type a keyword to search online for the
-                  video that best fits your document. To make your document look professionally produced, Word provides
-                  header, footer, cover page, and text box designs that complement each other.
-                  For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the
-                  elements you want from the different galleries. Themes and styles also help keep your document
-                  coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics
-                  change to match your new theme.
-                  When you apply styles, your headings change to match the new theme. Save time in Word with new buttons
-                  that show up where you need them. To change the way a picture fits in your document, click it and a
-                  button for layout options appears next to it. When you work on a table, click where you want to add a
-                  row or a column, and then click the plus sign.
-                  Video provides a powerful way to help you prove your point. When you click Online Video, you can paste
-                  in the embed code for the video you want to add. You can also type a keyword to search online for the
-                  video that best fits your document. To make your document look professionally produced, Word provides
-                  header, footer, cover page, and text box designs that complement each other.
-                  For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the
-                  elements you want from the different galleries. Themes and styles also help keep your document
-                  coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics
-                  change to match your new theme.
-                  When you apply styles, your headings change to match the new theme. Save time in Word with new buttons
-                  that show up where you need them. To change the way a picture fits in your document, click it and a
-                  button for layout options appears next to it. When you work on a table, click where you want to add a
-                  row or a column, and then click the plus sign.
-                  Video provides a powerful way to help you prove your point. When you click Online Video, you can paste
-                  in the embed code for the video you want to add. You can also type a keyword to search online for the
-                  video that best fits your document. To make your document look professionally produced, Word provides
-                  header, footer, cover page, and text box designs that complement each other.
-                  For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the
-                  elements you want from the different galleries. Themes and styles also help keep your document
-                  coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics
-                  change to match your new theme.
-                  When you apply styles, your headings change to match the new theme. Save time in Word with new buttons
-                  that show up where you need them. To change the way a picture fits in your document, click it and a
-                  button for layout options appears next to it. When you work on a table, click where you want to add a
-                  row or a column, and then click the plus sign.
-               </p>
-               <h3 class="fs-4 text-main">
-                  <strong>Bài viết khác</strong>
-               </h3>
-               <ul class="post-list-other">
-                  <li><a href="post_detail.html">Tiêu đề bài viết 2</a></li>
-                  <li><a href="post_detail.html">Tiêu đề bài viết 3</a></li>
-                  <li><a href="post_detail.html">Tiêu đề bài viết 4</a></li>
-                  <li><a href="post_detail.html">Tiêu đề bài viết 5</a></li>
-                  <li><a href="post_detail.html">Tiêu đề bài viết 6</a></li>
-                  <li><a href="post_detail.html">Tiêu đề bài viết 7</a></li>
-               </ul>
-            </div>
-         </div>
+                  </td>
+                  <td class="text-center align-middle">
+                     12900000
+                  </td>
+                  <td class="text-center align-middle">
+                     <button class="btn btn-sm btn-main">
+                        <i class="fa-solid fa-xmark"></i>
+                     </button>
+                  </td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <td colspan="5">
+                     <button class="btn btn-main">Cập nhật</button>
+                     <a href="checkout.html" class="btn btn-main">Thanh toán</a>
+                  </td>
+                  <td colspan="2" class="text-end">
+                     <strong>Tổng tiền: 0999998887</strong>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
       </div>
+      <script>
+         function changenumber(id) {
+            var qty = parseInt(document.getElementById("qty").value);
+            if (id == 'sub') {
+               if (qty > 0) {
+                  qty = qty - 1;
+               }
+            }
+            else {
+               qty = qty + 1;
+            }
+            document.getElementById("qty").value = qty.toString();
+         }
+      </script>
    </section>
    <section class="hdl-footer pb-4">
       <div class="container">

@@ -2,9 +2,20 @@
 
 use App\Libraries\MyClass;
 use App\Models\Brand;
+use App\Models\User;
 
 $id = $_REQUEST['id'];
 $brand = Brand::find($id);
+
+$createdById = $brand->created_by;
+$updatedById = $brand->updated_by;
+
+$createdByUser = User::find($createdById);
+$updatedByUser = User::find($updatedById);
+
+$createdByName = $createdByUser ? $createdByUser->name : 'Unknown';
+$updatedByName = $updatedByUser ? $updatedByUser->name : 'Unknown';
+
 if ($brand == null) {
     MyClass::set_flash('message', ['msg' => 'Lỗi trang 404', 'type' => 'danger']);
     header("location:index.php?option=brand");
@@ -12,65 +23,90 @@ if ($brand == null) {
 ?>
 <?php require_once "../views/backend/header.php"; ?>
 <!-- CONTENT -->
-<form action="index.php?option=brand&cat=process" method="post" enctype="multipart/form-data">
-    <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-12">
-                        <h1 class="d-inline">Cập nhật thương hiệu</h1>
-                    </div>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1 class="d-inline">Chi tiết thương hiệu</h1>
                 </div>
             </div>
-        </section>
-        <!-- Main content -->
-        <section class="content">
-            <div class="card">
-                <div class="card-header text-right">
-                    <button class="btn btn-sm btn-success" type="submit" name="CAPNHAT">
-                        <i class="fa fa-save" aria-hidden="true"></i>
-                        Lưu
-                    </button>
-                    <a href="index.php?option=brand" class="btn btn-sm btn-info">
-                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                        Về danh sách
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <input type="hidden" name="id" value="<?= $brand->id; ?>" />
-                                <label>Tên thương hiệu (*)</label>
-                                <input type="text" value="<?= $brand->name; ?>" name="name" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label>Slug</label>
-                                <input type="text" value="<?= $brand->slug; ?>" name="slug" class="form-control">
-                            </div>
-                        </div class="mb-3">
-                        <label>Mô tả</label>
-                        <textarea name="description" class="form-control"><?= $brand->description; ?></textarea>
-                    </div>
-                    </label>
-                    <div class="mb-3">
-                        <label>Hình đại diện</label>
-                        <input type="file" name="image" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Trạng thái</label>
-                        <select name="status" class="form-control">
-                            <option value="1" <?= ($brand->status == 1) ? 'selected' : ''; ?>>Xuất bản</option>
-                            <option value="2" <?= ($brand->status == 2) ? 'selected' : ''; ?>>Chưa xuất bản</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-    </div>
-    </div>
+        </div>
     </section>
-    </div>
-</form>
-<!-- END CONTENT-->
-<?php require_once '../views/backend/footer.php'; ?>
+    <!-- Main content -->
+
+    <section class="content">
+        <div class="card">
+            <div class="card-header ">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <a href="index.php?option=brand" class="btn btn-sm btn-info">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            Về danh sách
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tên trường</th>
+                                    <th>Giá trị</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ID</td>
+                                    <td><?= $brand->id; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Tên thương hiệu</td>
+                                    <td><?= $brand->name; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Slug</td>
+                                    <td><?= $brand->slug; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Hình ảnh</td>
+                                    <td><img style="width:100px" src="../public/images/brand/<?= $brand->image; ?>" alt="<?= $brand->image; ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mô tả</td>
+                                    <td><?= $brand->description; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày tạo</td>
+                                    <td><?= $brand->created_at; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Người tạo</td>
+                                    <td><?= $createdByName; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày sửa</td>
+                                    <td><?= $brand->updated_at; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Người sửa</td>
+                                    <td><?= $updatedByName; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Trạng thái</td>
+                                    <?php if($brand->status == 1): ?>
+                                        <td>Xuất bản</td>
+                                    <?php else: ?>
+                                        <td>Chưa xuất bản</td>
+                                    <?php endif; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

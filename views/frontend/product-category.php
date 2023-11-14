@@ -1,13 +1,20 @@
 <?php
 
+use App\Libraries\Pagination;
 use App\Models\Category;
 use App\Models\Product;
 
-$lug = $_REQUEST['cat'];
-$cat = Category::where([['status', '=', 1], ['slug', '=', $lug]])->select('id', 'name')->first();
+$limit = 8;
+$current = Pagination::pageCurrent();
+$offset = Pagination::pageOffset($current, $limit);
+
+$slug = $_REQUEST['cat'];
+$cat = Category::where([['status', '=', 1], ['slug', '=', $slug]])->select('id', 'name')->first();
 $list_id = array();
 array_push($list_id, $cat->id);
-$list_category1 = Category::where([['parent_id', '=', $cat->id], ['status', '=', 1]])
+
+// Lấy danh sách các danh mục con của $cat
+$list_category1 = Category::where([['parent_id', $cat->id], ['status', '=', 1]])
    ->orderBy('sort_order', 'ASC')
    ->select('id')
    ->get();
@@ -15,10 +22,13 @@ $list_category1 = Category::where([['parent_id', '=', $cat->id], ['status', '=',
 if (count($list_category1) > 0) {
    foreach ($list_category1 as $cat1) {
       array_push($list_id, $cat1->id);
-      $list_category2 = Category::where([['parent_id', '=', $cat1->id], ['status', '=', 1]])
+
+      // Lấy danh sách các danh mục con của $cat1
+      $list_category2 = Category::where([['parent_id', $cat1->id], ['status', '=', 1]])
          ->orderBy('sort_order', 'ASC')
          ->select('id')
          ->get();
+
       if (count($list_category2) > 0) {
          foreach ($list_category2 as $cat2) {
             array_push($list_id, $cat2->id);
@@ -27,15 +37,17 @@ if (count($list_category1) > 0) {
    }
 }
 
+// Lấy danh sách sản phẩm dựa trên danh mục
 $list_product = Product::where('status', '=', 1)
    ->whereIn('category_id', $list_id)
    ->orderBy('created_at', 'DESC')
+   ->skip($offset)
+   ->limit($limit)
    ->get();
-
-var_dump($cat->id);
-
+$total = Product::where('status', '=', 1)
+   ->whereIn('category_id', $list_id)
+   ->count();
 ?>
-
 <?php require_once "views/frontend/header.php"; ?>
 <section class="bg-light">
    <div class="container">
@@ -45,7 +57,7 @@ var_dump($cat->id);
                <a class="text-main" href="index.html">Trang chủ</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-               Sản phẩm theo loại
+               <?= $cat->name; ?>
             </li>
          </ol>
       </nav>
@@ -61,40 +73,20 @@ var_dump($cat->id);
          </div>
          <div class="col-md-9 order-1 order-md-2">
             <div class="category-title bg-main">
-               <h3 class="fs-5 py-3 text-center"><?= $cat->name ?></h3>
+               <h3 class="fs-5 py-3 text-center"><?= $cat->name; ?></h3>
             </div>
             <div class="product-category mt-3">
                <div class="row product-list">
+
                   <?php foreach ($list_product as $product) : ?>
                      <div class="col-6 col-md-3 mb-4">
                         <?php require 'views/frontend/product-item.php'; ?>
                      </div>
                   <?php endforeach; ?>
+
                </div>
             </div>
-            <nav aria-label="Phân trang">
-               <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                     <a class="page-link text-main" href="product_category.html" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                     </a>
-                  </li>
-                  <li class="page-item">
-                     <a class="page-link text-main" href="product_category.html">1</a>
-                  </li>
-                  <li class="page-item">
-                     <a class="page-link text-main" href="product_category.html">2</a>
-                  </li>
-                  <li class="page-item">
-                     <a class="page-link text-main" href="product_category.html">3</a>
-                  </li>
-                  <li class="page-item">
-                     <a class="page-link text-main" href="product_category.html" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                     </a>
-                  </li>
-               </ul>
-            </nav>
+            <?= Pagination::pageLink($total, $current, $limit, 'index.php?option=product&cat=' . $slug); ?>
          </div>
       </div>
    </div>

@@ -13,11 +13,11 @@ $mod_slider = Banner::where([['position', '=', 'slideshow'], ['status', '=', 1]]
             <?php foreach ($mod_slider as $slider) : ?>
                 <?php if ($index == 0) : ?>
                     <div class="carousel-item active">
-                        <img src="public/images/banner/<?=$slider->image; ?>" class="d-block w-100" alt="...">
+                        <img src="public/images/banner/<?=$slider->image; ?>" class="d-block w-100" alt="<?=$slider->image; ?>">
                     </div>
                 <?php else : ?>
                     <div class="carousel-item">
-                        <img src="public/images/banner/<?=$slider->image; ?>" class="d-block w-100" alt="...">
+                        <img src="public/images/banner/<?=$slider->image; ?>" class="d-block w-100" alt="<?=$slider->image; ?>">
                     </div>
                 <?php endif; ?>
                 <?php $index++ ?>

@@ -130,4 +130,5 @@ class MyClass
     {
         return isset($_SESSION[$name]);
     }
+
 }

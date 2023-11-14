@@ -9,6 +9,7 @@
    <link rel="stylesheet" href="public/fontawesome/css/all.min.css">
    <link rel="stylesheet" href="public/css/frontend.css">
    <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="public/jquery/jquery-3.7.0.min.js"></script>
 </head>
 
 <body>
@@ -33,19 +34,19 @@
                <div class="call-login--register border-bottom">
                   <ul class="nav nav-fills py-0 my-0">
                      <li class="nav-item">
-                        <a class="nav-link" href="login.html">
+                        <a class="nav-link" href="login.php">
                            <i class="fa fa-phone-square" aria-hidden="true"></i>
-                           0987654321
+                           0343970915
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                        <a class="nav-link" href="login.php">Đăng nhập</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="register.html">Đăng ký</a>
+                        <a class="nav-link" href="register.php">Đăng ký</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="profile.html">Hồ Diên Lợi</a>
+                        <a class="nav-link" href="profile.php">Nguyễn Tấn Lĩnh</a>
                      </li>
                   </ul>
                </div>
@@ -54,10 +55,12 @@
                </div>
             </div>
             <div class="col-6 col-sm-6 col-md-1 text-end py-4 py-md-2">
-               <a href="cart.html">
+               <a href="index.php?option=cart">
                   <div class="box-cart float-end">
                      <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                     <span>1</span>
+                     <span id="showcart">
+                        <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;  ?>
+                     </span>
                   </div>
                </a>
             </div>

@@ -1,7 +1,7 @@
 :root
 {
-    --text-main:#ff0099;
-    --bg-main:#ff0099;
+    --text-main:#ad82d9;
+    --bg-main:#ad82d9;
 }
 .bg-main
 {
@@ -19,8 +19,8 @@
 }
 .btn-main:hover
 {
-   border: 1px solid #ff0099;
-   color:#ff0099;
+   border: 1px solid #ad82d9;
+   color:#ad82d9;
 }
 /*hdl-header*/
 .box-cart {
@@ -28,13 +28,13 @@
     height: 60px;
     line-height: 60px;
     text-align: center;
-    border: 1px solid #ff0099;
+    border: 1px solid #ad82d9;
     position: relative;
  }
 
  .box-cart i {
     font-size: 26px;
-    color:#ff0099;
+    color:#ad82d9;
  }
 
  .box-cart span {
@@ -44,7 +44,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background-color: #ff0099;
+    background-color: #ad82d9;
     line-height: 25px;
     font-size: 14px;
     color: white;
@@ -97,7 +97,7 @@
  }
 
  .product-item .product-item-name a {
-    color: #ff0099;
+    color: #ad82d9;
     text-decoration: none;
  }
 
@@ -115,7 +115,7 @@
  }
  ul.list-category li a,ul.list-brand li a,ul.list-page li a
  {
-   color:#ff0099;
+   color:#ad82d9;
    text-decoration: none;
    transition: 0.5s;
  }
