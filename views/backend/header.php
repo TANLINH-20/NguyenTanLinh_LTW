@@ -65,7 +65,7 @@
          <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                <div class="image">
-                  <img src="../public/images/<?= ($_SESSION['image'])??'image.png'; ?>" class="img-circle elevation-2" alt="<?= ($_SESSION['image'])??'image.png'; ?>">
+                  <img src="../public/images/<?= ($_SESSION['image'])??'image.png'; ?>" class="img-circle elevation-2" alt="">
                </div>
                <div class="info">
                   <a href="#" class="d-block"><?= ($_SESSION['name'])??'name'; ?></a>

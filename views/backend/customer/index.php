@@ -13,7 +13,6 @@ $list = User::where('status', '!=', '0')
          <div class="row mb-2">
             <div class="col-sm-12">
                <h1 class="d-inline">Tất cả khách hàng</h1>
-               <a href="customer_create.html" class="btn btn-sm btn-primary">Thêm khách hàng</a>
             </div>
          </div>
       </div>
@@ -21,8 +20,16 @@ $list = User::where('status', '!=', '0')
    <!-- Main content -->
    <section class="content">
       <div class="card">
-         <div class="card-header">
-            Noi dung
+      <div class="card-header ">
+            <div class="row">
+               <div class="col-md-6">
+                  <a href="index.php?option=customer">Tất cả</a> |
+                  <a href="index.php?option=customer&cat=trash">Thùng rác</a>
+               </div>
+               <div class="col-md-6 text-right">
+                  <a href="index.php?option=customer&cat=create" class="btn btn-sm btn-primary">Thêm khách hàng</a>
+               </div>
+            </div>
          </div>
          <div class="card-body">
             <table class="table table-bordered" id="mytable">
@@ -53,13 +60,23 @@ $list = User::where('status', '!=', '0')
                               </div>
                               <div class="function_style">
                                  <?php if ($item->status == 1) : ?>
-                                    <a class="text-success" href="index.php?option=user&cat=status&id=<?= $item->id ?>">Hiện</a> |
+                                    <a class="btn btn-success btn-xs" href="index.php?option=customer&cat=status&id=<?= $item->id ?>">
+                                       <i class="fa fa-toggle-on"></i>
+                                       Hiện</a>
                                  <?php else : ?>
-                                    <a class="text-danger" href="index.php?option=user&cat=status&id=<?= $item->id ?>">Ẩn</a> |
+                                    <a class="btn btn-danger btn-xs" href="index.php?option=customer&cat=status&id=<?= $item->id ?>">
+                                       <i class="fa fa-toggle-off"></i>
+                                       Ẩn</a>
                                  <?php endif; ?>
-                                 <a href="index.php?option=user&cat=edit&id=<?= $item->id ?>">Chỉnh sửa</a> |
-                                 <a href="index.php?option=user&cat=show&id=<?= $item->id ?>">Chi tiết</a> |
-                                 <a href="index.php?option=user&cat=delete&id=<?= $item->id ?>">Xoá</a>
+                                 <a class="btn btn-primary btn-xs" href="index.php?option=customer&cat=edit&id=<?= $item->id ?>">
+                                    <i class="fa fa-edit"></i>
+                                    Chỉnh sửa</a>
+                                 <a class="btn btn-info btn-xs" href="index.php?option=customer&cat=show&id=<?= $item->id ?>">
+                                    <i class="fa fa-eye"></i>
+                                    Chi tiết</a>
+                                 <a class="btn btn-danger btn-xs" href="index.php?option=customer&cat=delete&id=<?= $item->id ?>">
+                                    <i class="fa fa-trash"></i>
+                                    Xoá</a>
                               </div>
                            </td>
                            <td> <?= $item->phone; ?></td>

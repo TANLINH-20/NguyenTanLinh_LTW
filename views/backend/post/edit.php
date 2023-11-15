@@ -45,6 +45,7 @@ if ($post == null) {
                 <div class="row">
                   <div class="col-md-9">
                      <div class="mb-3">
+                     <input type="hidden" name="id" value="<?= $post->id; ?>" />
                         <label>Tiêu đề bài viết (*)</label>
                         <input type="text" name="title" value="<?= $post->title; ?>" class="form-control" required>
                      </div>

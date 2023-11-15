@@ -7,13 +7,10 @@ use App\Models\User;
 $id = $_REQUEST['id'];
 $contact = Contact::find($id);
 
-$createdById = $contact->created_by;
 $updatedById = $contact->updated_by;
 
-$createdByUser = User::find($createdById);
 $updatedByUser = User::find($updatedById);
 
-$createdByName = $createdByUser ? $createdByUser->name : 'Unknown';
 $updatedByName = $updatedByUser ? $updatedByUser->name : 'Unknown';
 
 if ($contact == null) {
@@ -70,27 +67,27 @@ if ($contact == null) {
                                     <td><?= $contact->email; ?></td>
                                 </tr>
                                 <tr>
+                                    <td>Điện thoại</td>
+                                    <td><?= $contact->phone; ?></td>
+                                </tr>
+                                <tr>
                                     <td>Tiêu đề</td>
-                                    <td><?= $contact->phone; ?></td>
+                                    <td><?= $contact->title; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Phone</td>
-                                    <td><?= $contact->phone; ?></td>
+                                    <td>Nội dung liên hệ</td>
+                                    <td><?= $contact->replay_id; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Ngày tạo</td>
+                                    <td>Ngày liên hệ</td>
                                     <td><?= $contact->created_at; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Người tạo</td>
-                                    <td><?= $createdByName; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Ngày sửa</td>
+                                    <td>Ngày trả lời</td>
                                     <td><?= $contact->updated_at; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Người sửa</td>
+                                    <td>Người trả lời</td>
                                     <td><?= $updatedByName; ?></td>
                                 </tr>
                                 <tr>

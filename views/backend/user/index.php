@@ -1,7 +1,9 @@
 <?php
+
 use App\Models\User;
-$list = User::where('status','!=','0')
-->orderBy('created_at','desc')->get();
+
+$list = User::where('status', '!=', '0')
+   ->orderBy('created_at', 'desc')->get();
 ?>
 <?php require_once "../views/backend/header.php"; ?>
 <!-- CONTENT -->
@@ -10,8 +12,7 @@ $list = User::where('status','!=','0')
       <div class="container-fluid">
          <div class="row mb-2">
             <div class="col-sm-12">
-               <h1 class="d-inline">Tất cả thành viên</h1>
-               <a href="user_create.html" class="btn btn-sm btn-primary">Thêm thành viên</a>
+               <h1 class="d-inline">Tất cả Thành viên</h1>
             </div>
          </div>
       </div>
@@ -19,10 +20,19 @@ $list = User::where('status','!=','0')
    <!-- Main content -->
    <section class="content">
       <div class="card">
-         <div class="card-header">
-            Noi dung
+      <div class="card-header ">
+            <div class="row">
+               <div class="col-md-6">
+                  <a href="index.php?option=user">Tất cả</a> |
+                  <a href="index.php?option=user&cat=trash">Thùng rác</a>
+               </div>
+               <div class="col-md-6 text-right">
+                  <a href="index.php?option=user&cat=create" class="btn btn-sm btn-primary">Thêm thành viên</a>
+               </div>
+            </div>
          </div>
          <div class="card-body">
+            <?php require_once "../views/backend/message.php"; ?>
             <table class="table table-bordered" id="mytable">
                <thead>
                   <tr>
@@ -36,7 +46,7 @@ $list = User::where('status','!=','0')
                   </tr>
                </thead>
                <tbody>
-               <?php if (count($list) > 0) : ?>
+                  <?php if (count($list) > 0) : ?>
                      <?php foreach ($list as $item) : ?>
                         <tr class="datarow">
                            <td>
@@ -51,13 +61,23 @@ $list = User::where('status','!=','0')
                               </div>
                               <div class="function_style">
                                  <?php if ($item->status == 1) : ?>
-                                    <a class="text-success" href="index.php?option=user&cat=status&id=<?= $item->id ?>">Hiện</a> |
+                                    <a class="btn btn-success btn-xs" href="index.php?option=user&cat=status&id=<?= $item->id ?>">
+                                       <i class="fa fa-toggle-on"></i>
+                                       Hiện</a>
                                  <?php else : ?>
-                                    <a class="text-danger" href="index.php?option=user&cat=status&id=<?= $item->id ?>">Ẩn</a> |
+                                    <a class="btn btn-danger btn-xs" href="index.php?option=user&cat=status&id=<?= $item->id ?>">
+                                       <i class="fa fa-toggle-off"></i>
+                                       Ẩn</a>
                                  <?php endif; ?>
-                                 <a href="index.php?option=user&cat=edit&id=<?= $item->id ?>">Chỉnh sửa</a> |
-                                 <a href="index.php?option=user&cat=show&id=<?= $item->id ?>">Chi tiết</a> |
-                                 <a href="index.php?option=user&cat=delete&id=<?= $item->id ?>">Xoá</a>
+                                 <a class="btn btn-primary btn-xs" href="index.php?option=user&cat=edit&id=<?= $item->id ?>">
+                                    <i class="fa fa-edit"></i>
+                                    Chỉnh sửa</a>
+                                 <a class="btn btn-info btn-xs" href="index.php?option=user&cat=show&id=<?= $item->id ?>">
+                                    <i class="fa fa-eye"></i>
+                                    Chi tiết</a>
+                                 <a class="btn btn-danger btn-xs" href="index.php?option=user&cat=delete&id=<?= $item->id ?>">
+                                    <i class="fa fa-trash"></i>
+                                    Xoá</a>
                               </div>
                            </td>
                            <td> <?= $item->phone; ?></td>

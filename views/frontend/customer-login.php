@@ -2,32 +2,27 @@
 
 use App\Models\User;
 
-if (isset($_POST["LOGIN"])) {
-    $username = $_POST['username'];
-    $password = sha1($_POST['password']);
-
-    $args = [
-        ['status', '=', 1],
-    ];
-
-    if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
-        $args[] = ['email', '=', $username];
-    } else {
-        $args[] = ['username', '=', $username];
-    }
-
-    $user = User::where($args)->first();
-
-    if ($user !== null && password_verify($_POST['password'], $user->password)) {
-        session_start();
-        $_SESSION['iscustom'] = $username;
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['name'] = $user->name;
-        header('location:index.php');
-        exit(); // Dừng thực thi mã ngay sau khi chuyển hướng
-    } else {
-        $error = "Đăng nhập thất bại. Vui lòng kiểm tra tên người dùng hoặc mật khẩu.";
-    }
+if (isset($_POST['LOGIN'])) {
+   $username = $_POST['username'];
+   $password = sha1($_POST['password']);
+   $args = [
+      ['password', '=', $password],
+      ['status', '=', 1],
+   ];
+   if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+      $args[] = array('email', '=', $username);
+   } else {
+      $args[] = array('username', '=', $username);
+   }
+   $user = User::where($args)->first();
+   if ($user !== NULL) {
+      $_SESSION['iscustom'] = $username;
+      $_SESSION['user_id'] = $user->id;
+      $_SESSION['name'] = $user->name;
+      header('Location:index.php');
+   } else {
+      $error = "Tài khoản không hợp lệ";
+   }
 }
 ?>
 
@@ -46,8 +41,8 @@ if (isset($_POST["LOGIN"])) {
       </nav>
    </div>
 </section>
-<section class="hdl-maincontent py-2">
-   <form action="index.php?option=customer&login=true" method="post" name="logincustomer">
+<form action="index.php?option=customer&login=true" method="post" name="logincustomer">
+   <section class="hdl-maincontent py-2">
       <div class="container">
          <div class="row">
             <div class="col-md-4">
@@ -66,10 +61,10 @@ if (isset($_POST["LOGIN"])) {
                   <button class="btn btn-main" name="LOGIN">Đăng nhập</button>
                </div>
                <p><u class="text-main">Chú ý</u>: (*) Thông tin bắt buộc phải nhập</p>
-               <?php echo $error??"";?>
+               <?php echo $error ?? ""; ?>
             </div>
          </div>
       </div>
-   </form>
-</section>
+   </section>
+</form>
 <?php require_once "views/frontend/footer.php"; ?>

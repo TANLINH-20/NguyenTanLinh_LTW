@@ -84,5 +84,5 @@ if (isset($_POST['CAPNHAT'])) {
     $product->save();
     //Chuyển hướng trang
     MyClass::set_flash('message',['msg'=>'Cập nhật thành công','type'=>'success']);
-    header('location:index.php?option=product&cat=create');
+    header('location:index.php?option=product');
 }

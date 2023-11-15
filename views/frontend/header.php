@@ -17,8 +17,8 @@
       <div class="container">
          <div class="row">
             <div class="col-6 col-sm-6 col-md-2 py-1">
-               <a href="index.html">
-                  <img src="public/images/logo.png" class="img-fluid" alt="Logo">
+               <a href="index.php">
+                  <img src="public/images/logo_tanlinh_clother-01.png" class="img-fluid" alt="Logo">
                </a>
             </div>
             <div class="col-12 col-sm-9 d-none d-md-block col-md-5 py-3">
@@ -34,20 +34,28 @@
                <div class="call-login--register border-bottom">
                   <ul class="nav nav-fills py-0 my-0">
                      <li class="nav-item">
-                        <a class="nav-link" href="login.php">
+                        <a class="nav-link" href="index.php?option=customer&login=true">
                            <i class="fa fa-phone-square" aria-hidden="true"></i>
                            0343970915
                         </a>
                      </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Đăng nhập</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="register.php">Đăng ký</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="profile.php">Nguyễn Tấn Lĩnh</a>
-                     </li>
+                     <?php if (isset($_SESSION['iscustom'])) : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <?= $_SESSION['name']; ?>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?option=customer&logout=true">Đăng xuất</a>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?option=customer&login=true">Đăng nhập</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?option=customer&register=true">Đăng ký</a>
+                                </li>
+                            <?php endif; ?>
                   </ul>
                </div>
                <div class="fs-6 py-2">

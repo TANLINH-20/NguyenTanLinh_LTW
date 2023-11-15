@@ -34,6 +34,7 @@ $list = Topic::where('status','!=','0')
                </div>
             </div>
             <div class="card-body">
+            <?php require_once "../views/backend/message.php"; ?>
                <div class="row">
                   <div class="col-md-4">
                      <div class="mb-3">

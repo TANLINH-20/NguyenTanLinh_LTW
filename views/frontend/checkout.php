@@ -1,44 +1,37 @@
-<?php
-
-use App\Libraries\Cart;
-use App\Models\User;
-use App\Models\Order;
-use App\Models\Orderdetail;
-
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-$customer = null;
-if (isset($_SESSION['user_id'])) {
-    $customer = User::where([['status', '=', 1], ['id', '=', $_SESSION['user_id']]])->first();
-}
-$listcart = Cart::cartContent();
-if (isset($_POST['XACNHAN']) && count($listcart) > 0 && $customer) {
-   $order = new Order();
-   $order->user_id = $_SESSION['user_id'];
-   $order->deliveryaddress = $customer->name;
-   $order->deliveryname = $customer->phone;
-   $order->deliveryphone = $customer->email;
-   $order->deliveryemail = $customer->address;
-   $order->note = "Không chú ý";
-   $order->created_at = date('Y-m-d H:i:s');
-   $order->status = 1;
-   if ($order->save()) {
-      foreach ($listcart as $cart) {
-         $orderdetail = new Orderdetail();
-         $orderdetail->order_id = $order->id;
-         $orderdetail->product_id = $cart['id'];
-         $orderdetail->price = $cart['price'];
-         $orderdetail->qty = $cart['qty'];
-         $orderdetail->amount = $cart['price'] * $cart['qty'];
-         $orderdetail->save();
+<?php 
+    use App\Models\User; 
+    use App\Models\Order; 
+    use App\Models\Orderdetail;  
+   use App\Libraries\Cart;
+   $customer = User::where([['status','=',1],['id','=',$_SESSION['user_id']]])->first();  
+   $listcart = Cart::cartContent(); 
+   if(isset($_POST['XACNHAN']) && count($listcart)>0){
+      $order = new Order();
+      $order->user_id = $_SESSION['user_id'];
+      $order->deliveryname = $customer->name;
+      $order->deliveryphone = $customer->phone;
+      $order->deliveryemail = $customer->email;
+      $order->deliveryaddress = $customer->address;   
+      $order->note = "Khong chu y";
+      $order->created_at = date('Y-m-d H:i:s');
+      $order->updated_at = date('Y-m-d H:i:s');
+      $order->status = 1;
+      if($order->save()){
+         foreach($listcart as $cart){
+            $orderdetail = new Orderdetail();
+            $orderdetail->order_id = $order->id;
+            $orderdetail->product_id = $cart['id'];
+            $orderdetail->price = $cart['price'];
+            $orderdetail->qty = $cart['qty'];
+            $orderdetail->amount = $cart['price'] * $cart['qty'];
+            $orderdetail->updated_at = $order->updated_at;
+            $orderdetail->created_at = $order->created_at;
+            $orderdetail->save();
+         }
+         unset($_SESSION['cart']);
+         header("Location:index.php");
       }
-      unset($_SESSION['cart']);
-      header("location:index.php");
-      exit(); 
    }
-}
-
 ?>
 <?php require_once "views/frontend/header.php"; ?>
 <section class="bg-light">
@@ -46,7 +39,7 @@ if (isset($_POST['XACNHAN']) && count($listcart) > 0 && $customer) {
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
          <ol class="breadcrumb py-2 my-0">
             <li class="breadcrumb-item">
-               <a class="text-main" href="index.html">Trang chủ</a>
+               <a class="text-main" href="index.php">Trang chủ</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
                Thanh toán
@@ -90,8 +83,8 @@ if (isset($_POST['XACNHAN']) && count($listcart) > 0 && $customer) {
                         <label for="check2">Chuyển khoản qua ngân hàng</label>
                      </div>
                      <div class="p-4 border bankinfo">
-                        <p>Ngân Hàng Vietcombank </p>
-                        <p>STK: 99999999999999</p>
+                        <p>Ngân Hàng TP Bank </p>
+                        <p>STK: 020 111 222 33</p>
                         <p>Chủ tài khoản: Nguyễn Tấn Lĩnh</p>
                      </div>
                   </div>

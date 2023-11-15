@@ -29,7 +29,7 @@ if($banner==null){
                   <i class="fa fa-arrow-left" aria-hidden="true"></i>
                   Về danh sách
                </a>
-               <button type="submit" class="btn btn-sm btn-success" name="THEM">
+               <button type="submit" class="btn btn-sm btn-success" name="CAPNHAT">
                   <i class="fa fa-save" aria-hidden="true"></i>
                   Lưu
                </button>
@@ -39,6 +39,7 @@ if($banner==null){
                <div class="row">
                   <div class="col-md-9">
                      <div class="mb-3">
+                        <input type="hidden" name="id" value="<?= $banner->id; ?>" />
                         <label>Tên banner (*)</label>
                         <input type="text" name="name" value="<?= $banner->name; ?>" class="form-control" required>
                      </div>
