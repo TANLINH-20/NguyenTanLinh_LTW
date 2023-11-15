@@ -4,15 +4,16 @@
             <div class="col-md-4 pt-4">
                <h3 class="widgettilte">CHÚNG TÔI LÀ AI ?</h3>
                <p class="pt-1">
-                  Copyright@ 2024 DienloiShop là hệ thống bán sĩ và lẽ thời trang nam, nữ, trẻ em và quần áo thể thao,
+                  Copyright@ 2024 TanLinhShop là hệ thống bán sĩ và lẽ thời trang nam, nữ, trẻ em và quần áo thể thao,
                   mong muốn đem đến chất lượng tốt nhất cho khách hàng.
                </p>
                <p class="pt-1">
                   Địa chỉ: B216A, KP Bình Phước, Phường Bình Nhâm, TP. Thuận An, Bình Dương
                </p>
                <p class="pt-1">
-                  Điện thoại: 0985 608 759(call, zalo) - Email: dienloisoft@gmail.com
+                  Điện thoại: 034 3970 915(call, zalo)
                </p>
+               <p>  Email: linhnguyentan24@gmail.com</p>
                <h3 class="widgettilte">MẠNG XÃ HỘI</h3>
                <div class="social my-3">
                   <div class="facebook-icon">
@@ -44,14 +45,14 @@
                <h3 class="fs-5 text-end">
                   <strong>Lượt truy cập</strong>
                </h3>
-               <p class="my-1">9888 lượt</p>
+               <p class="my-1">10.000 lượt</p>
             </div>
          </div>
       </div>
    </section>
    <section class="dhl-copyright bg-dark py-3">
       <div class="container text-center text-white">
-         Thiết kế bởi: Hồ Diên Lợi - Phone: 0998765432
+         Thiết kế bởi: Nguyễn Tấn Lĩnh - Phone: 0343970915
       </div>
    </section>
 </body>

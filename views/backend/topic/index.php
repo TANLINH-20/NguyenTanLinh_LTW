@@ -48,6 +48,7 @@ $list = Topic::where('status','!=','0')
                      <div class="mb-2">
                         <label>Chủ đề cha (*)</label>
                         <select name="parent_id" class="form-control">
+                        <option value="0">None</option>
                            <?php if (count($list) > 0) : ?>
                               <?php foreach ($list as $item) : ?>
                                  <option value="<?= $item->parent_id ?>"><?= $item->name ?></option>

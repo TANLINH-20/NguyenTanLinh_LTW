@@ -45,10 +45,7 @@ if (isset($_POST['LOGIN'])) {
    <section class="hdl-maincontent py-2">
       <div class="container">
          <div class="row">
-            <div class="col-md-4">
-               <p>Để gửi bình luận, liên hệ hay để mua hàng cần phải có tài khoản</p>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                <div class="mb-3">
                   <label for="username" class="text-main">Tên tài khoản (*)</label>
                   <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tài khoản đăng nhập" required>

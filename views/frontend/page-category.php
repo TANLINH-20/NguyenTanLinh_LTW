@@ -1,6 +1,11 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Menu;
+
+$mod_footermenu = Menu::where([['position', '=', 'footermenu'], ['parent_id', '=', 0], ['status', '=', 1]])
+   ->orderBy('sort_order', 'ASC')
+   ->get();
 
 $slug = $_REQUEST['cat'];
 $page = Post::where([['slug', '=', $slug], ['type', '=', 'page'], ['status', '=', 1]])->first();
@@ -25,25 +30,17 @@ $page = Post::where([['slug', '=', $slug], ['type', '=', 'page'], ['status', '='
       <div class="row">
          <div class="col-md-3 order-2 order-md-1">
             <ul class="list-group mb-3 list-page">
-               <li class="list-group-item bg-main py-3">Các trang khác</li>
-               <li class="list-group-item">
-                  <a href="post_page.html">Chính sách mua hàng</a>
-               </li>
-               <li class="list-group-item">
-                  <a href="post_page.html">Chính sách vận chuyển</a>
-               </li>
-               <li class="list-group-item">
-                  <a href="post_page.html">Chính sách đổi trả</a>
-               </li>
-               <li class="list-group-item">
-                  <a href="post_page.html">Chính sách bảo hành</a>
-               </li>
+               <li class="list-group-item bg-main py-3">Các chính sách </li>
+               <?php foreach ($mod_footermenu as $rowmenu1) : ?>
+                  <li class="list-group-item"><a href="<?= $rowmenu1->link; ?>"><?= $rowmenu1->name; ?></a>
+                  </li>
+               <?php endforeach; ?>
             </ul>
          </div>
          <div class="col-md-9 order-1 order-md-2">
-            <h1 class="fs-2 text-main"><?= $page->title?? "No Title" ;?></h1>
+            <h1 class="fs-2 text-main"><?= $page->title ?? "No Title"; ?></h1>
             <p>
-               <?= $page->detail?? "No Detail" ;?>
+               <?= $page->detail ?? "No Detail"; ?>
             </p>
          </div>
       </div>

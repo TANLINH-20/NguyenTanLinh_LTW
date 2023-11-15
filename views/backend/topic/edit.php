@@ -53,6 +53,7 @@ if ($topic == null) {
                             <div class="mb-3">
                                 <label>Danh mục cha (*)</label>
                                 <select name="parent_id" class="form-control">
+                                    <option value="0">None</option>
                                     <?php if (count($list) > 0) : ?>
                                         <?php foreach ($list as $item) : ?>
                                             <option value="<?= $item->id ?>" <?= ($topic->parent_id == $item->id) ? 'selected' : ''; ?>>
