@@ -73,9 +73,13 @@ if($order == null){
                                  <td><?=$order->created_at; ?></td>
                               </tr>
                               <tr>
-                                 <td>Trạng thái</td>
-                                 <td><?=$order->status; ?></td>
-                              </tr>
+                                    <td>Trạng thái</td>
+                                    <?php if($order->status == 1): ?>
+                                        <td>Xuất bản</td>
+                                    <?php else: ?>
+                                        <td>Chưa xuất bản</td>
+                                    <?php endif; ?></td>
+                                </tr>
                            </tbody>
                         </table>
                      </div>

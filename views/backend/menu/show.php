@@ -1,10 +1,14 @@
 <?php
-use App\Models\menu;
+use App\Models\Menu;
+use App\Models\User;
 use App\Libraries\MyClass;
 $id = $_REQUEST['id'];
-$menu = menu::find($id);
+$menu = Menu::find($id);
+$parentId= Menu::find($menu->parent_id);
+
+$parentName = $parentId ? $parentId->name : '';
 if($menu == null){
-   MyClass::set_flash('message',['msg'=>'Lỗi trang','type'=>'danger']);
+   MyClass::set_flash('message',['msg'=>'Lỗi trang 404','type'=>'danger']);
     header('Location:index.php?option=menu&cat=menu');
 }
 ?>
@@ -15,7 +19,7 @@ if($menu == null){
             <div class="container-fluid">
                <div class="row mb-2">
                   <div class="col-sm-12">
-                     <h1 class="d-inline">Chi tiết thương hiệu</h1>
+                     <h1 class="d-inline">Chi tiết menu</h1>
                   </div>
                </div>
             </div>
@@ -39,81 +43,61 @@ if($menu == null){
                         <table class="table table-bordered">
                            <thead>
                               <tr>
-                                 <th class="text-center" style="width:30px;">
-                                    <input type="checkbox">
-                                 </th>
-                                 <th class="text-center" style="width:130px;">Hình ảnh</th>
                                  <th>Tên trường</th>
                                  <th>Giá trị</th>
                               </tr>
                            </thead>
                            <tbody>  
                               <tr>
-                                 <td></td>
-                                 <td></td>
+                                 
                                  <td>ID</td>
                                  <td><?=$menu->id; ?></td>
                               </tr>  
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Name</td>
+                                 
+                                 <td>Tên menu</td>
                                  <td><?=$menu->name; ?></td>
                               </tr>
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Slug</td>
-                                 <td><?=$menu->slug; ?></td>
+                                 
+                                 <td>Link</td>
+                                 <td><?=$menu->link; ?></td>
                               </tr>
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Image</td>
-                                 <td><?=$menu->image; ?></td>
+                                 
+                                 <td>Kiểu menu</td>
+                                 <td><?=$menu->type; ?></td>
                               </tr>
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Sort_order</td>
-                                 <td><?=$menu->sort_order; ?></td>
+                                 
+                                 <td>Vị trí</td>
+                                 <td><?=$menu->postion; ?></td>
                               </tr>
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Description</td>
-                                 <td><?=$menu->description; ?></td>
+                                 
+                                 <td>Level</td>
+                                 <td><?=$menu->level; ?></td>
                               </tr>
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Created_at</td>
-                                 <td><?=$menu->created_at; ?></td>
+                                 <td>Tên cấp cha</td>
+                                 <td><?=$parentName; ?></td>
                               </tr>
                               <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Created_by</td>
-                                 <td><?=$menu->created_by; ?></td>
-                              </tr>
-                              <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Updated_at</td>
-                                 <td><?=$menu->updated_at; ?></td>
-                              </tr>
-                              <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Updated_by</td>
-                                 <td><?=$menu->updated_by; ?></td>
-                              </tr>
-                              <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td>Status</td>
-                                 <td><?=$menu->status; ?></td>
-                              </tr>
+                                    <td>Ngày tạo</td>
+                                    <td><?= $menu->created_at; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Mã người tạo</td>
+                                    <td><?= $menu->created_by; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Trạng thái</td>
+                                    <?php if($menu->status == 1): ?>
+                                        <td>Xuất bản</td>
+                                    <?php else: ?>
+                                        <td>Chưa xuất bản</td>
+                                    <?php endif; ?></td>
+                                </tr>
                            </tbody>
                         </table>
                      </div>

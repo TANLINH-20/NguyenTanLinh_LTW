@@ -23,7 +23,7 @@
             <div class="card">
                <div class="card-header ">
                      <div class="text-left">
-                        <a class="text-success" href="index.php?option=menu">Tất cả</a>
+                        <a class="text-success" href="index.php?option=menu">Tất cả</a>|
                         <a class="text-danger" href="index.php?option=menu&cat=trash">Thùng rác</a>
                      </div>
                </div>
@@ -189,9 +189,6 @@
                                        <i class="fa fa-toggle-off"></i>
                                        Ẩn</a>
                                  <?php endif; ?>
-                                 <a class="btn btn-primary btn-xs" href="index.php?option=menu&cat=edit&id=<?= $item->id ?>">
-                                    <i class="fa fa-edit"></i>
-                                    Chỉnh sửa</a>
                                  <a class="btn btn-info btn-xs" href="index.php?option=menu&cat=show&id=<?= $item->id ?>">
                                     <i class="fa fa-eye"></i>
                                     Chi tiết</a>
