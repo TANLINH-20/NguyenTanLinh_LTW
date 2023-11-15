@@ -43,7 +43,7 @@ if (isset($_POST['CAPNHAT'])) {
     $post = Post::find($id);
     if ($post == null) {
         MyClass::set_flash('message', ['msg' => 'Lỗi trang 404', 'type' => 'danger']);
-        header("location:index.php?option=post&cat=create");
+        header("location:index.php?option=post");
     }
     //lấy từ form
     $post->title = $_POST['title'];

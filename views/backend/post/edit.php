@@ -85,7 +85,7 @@ if ($post == null) {
                         <label>Trạng thái</label>
                         <select name="status" class="form-control">
                            <option value="1"<?= ($post->status == 1) ? 'selected' : ''; ?>>Xuất bản</option>
-                           <option value="2"<?= ($post->status == 1) ? 'selected' : ''; ?>>Chưa xuất bản</option>
+                           <option value="2"<?= ($post->status == 2) ? 'selected' : ''; ?>>Chưa xuất bản</option>
                         </select>
                      </div>
                   </div>
