@@ -3,8 +3,9 @@
     use App\Models\Order; 
     use App\Models\Orderdetail;  
    use App\Libraries\Cart;
-   $customer = User::where([['status','=',1],['id','=',$_SESSION['user_id']]])->first();  
    $listcart = Cart::cartContent(); 
+   if(isset($_SESSION['user_id'])) {
+   $customer = User::where([['status','=',1],['id','=',$_SESSION['user_id']]])->first();  
    if(isset($_POST['XACNHAN']) && count($listcart)>0){
       $order = new Order();
       $order->user_id = $_SESSION['user_id'];
@@ -32,6 +33,7 @@
          header("Location:index.php");
       }
    }
+}
 ?>
 <?php require_once "views/frontend/header.php"; ?>
 <section class="bg-light">

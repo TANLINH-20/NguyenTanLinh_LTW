@@ -13,7 +13,7 @@ if (isset($_REQUEST['register'])) {
     require_once "views/frontend/customer-register.php";
 }
 
-if (isset($_SESSION['name'])) {
+if (isset($_REQUEST['profile'])) {
     require_once "views/frontend/customer-profile.php";
 }
  

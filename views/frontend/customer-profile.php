@@ -34,10 +34,10 @@ if (isset($_SESSION['user_id'])) {
                   <a href="index.php?option=customer&name=true">Thông tin tài khoản</a>
                </li>
                <li class="list-group-item">
-                  <a href="index.php?option=customer&name=true">Quản lý đơn hàng</a>
+                  <a href="#">Quản lý đơn hàng</a>
                </li>
                <li class="list-group-item">
-                  <a href="index.php?option=customer&changepassword=true">Đổi mật khẩu</a>
+                  <a href="#">Đổi mật khẩu</a>
                </li>
             </ul>
          </div>

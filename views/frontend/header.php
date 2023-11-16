@@ -34,14 +34,14 @@
                <div class="call-login--register border-bottom">
                   <ul class="nav nav-fills py-0 my-0">
                      <li class="nav-item">
-                        <a class="nav-link" href="index.php?option=customer&login=true">
+                        <a class="nav-link" href="#">
                            <i class="fa fa-phone-square" aria-hidden="true"></i>
                            0343970915
                         </a>
                      </li>
                      <?php if (isset($_SESSION['iscustom'])) : ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="index.php?option=customer&profile=true">
                                         <?= $_SESSION['name']; ?>
                                     </a>
                                 </li>

@@ -13,7 +13,7 @@ $mod_menu_listcategory = Category::where([['parent_id', '=', 0], ['status', '=',
     <ul class="dropdown-menu w-100">
         <?php foreach ($mod_menu_listcategory as $rowcat) : ?>
             <li>
-                <a class="dropdown-item" href="index.php?option=product&cat=<?= $rowcat->slug; ?>"> <?= $rowcat->name; ?> </a>
+                <a class="dropdown-item" href="index.php?option=product&cat=<?= $rowcat->slug; ?>"><?= $rowcat->name; ?> </a>
             </li> 
         <?php endforeach; ?>
     </ul>

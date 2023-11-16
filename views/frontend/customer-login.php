@@ -32,7 +32,7 @@ if (isset($_POST['LOGIN'])) {
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
          <ol class="breadcrumb py-2 my-0">
             <li class="breadcrumb-item">
-               <a class="text-main" href="index.html">Trang chủ</a>
+               <a class="text-main" href="index.php">Trang chủ</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
                Đăng nhập
