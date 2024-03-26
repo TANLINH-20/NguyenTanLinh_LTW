@@ -9,7 +9,7 @@ if (isset($_POST['THEM'])) {
     $user->phone = $_POST['phone'];
     $user->email = $_POST['email'];
     $user->username = $_POST['username'];  
-    $user->password = $_POST['password'];
+    $user->password = sha1($_POST['password']);
     $user->gender = $_POST['gender'];
     $user->address = $_POST['address'];
     $user->status = $_POST['status'];

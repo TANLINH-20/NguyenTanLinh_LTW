@@ -29,7 +29,7 @@ if (isset($_POST["REGISTER"])) {
          $newUser->gender = $gender;
          $newUser->username = $username;
          $newUser->email = $email;
-         $newUser->password = password_hash($password, PASSWORD_DEFAULT);
+         $newUser->password = sha1($password);
          $newUser->image = '';
          $newUser->roles = '';
          $newUser->created_at = date('Y-m-d H:i:s');

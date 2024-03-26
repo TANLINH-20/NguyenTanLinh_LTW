@@ -6,7 +6,7 @@ if (isset($_POST['LOGIN'])) {
    $username = $_POST['username'];
    $password = sha1($_POST['password']);
    $args = [
-      ['password', '=', $password],
+      ['password', '=',  $password],
       ['status', '=', 1],
    ];
    if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
